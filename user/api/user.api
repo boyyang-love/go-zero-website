@@ -1,0 +1,39 @@
+type (
+	LoginReq {
+		Username string `form:"username"`
+		Password string `form:"password"`
+	}
+
+	LoginRes {
+		Id        int64   `json:"id"`
+		Username  string  `json:"username"`
+		Password  string  `json:"password,omitempty"`
+		Gender    int     `json:"gender,omitempty"`
+		Age       int     `json:"age,omitempty"`
+		Birthday  *int64  `json:"birthday,omitempty"`
+		Address   string  `json:"address,omitempty"`
+		Tel       *int    `json:"tel,omitempty"`
+		Email     *string `json:"email,omitempty"`
+		AvatarUrl string  `json:"avatar_url,omitempty"`
+		Token     string  `json:"token"`
+	}
+)
+
+type (
+	RegisterReq {
+		Username string `form:"username"`
+		Password string `form:"password"`
+		Tel      string `form:"tel"`
+	}
+
+	RegisterRes {
+		Id int `json:"id"`
+	}
+)
+
+service user-api {
+	@handler login
+	post /user/login (LoginReq) returns (LoginRes)
+	@handler register
+	post /user/register (RegisterReq) returns (RegisterRes)
+}

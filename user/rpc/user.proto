@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package user;
+option go_package="./user";
+
+// 创建用户
+message CreateUserReq {
+  string username = 1;
+  string tel = 2;
+  string email = 3;
+  string password = 4;
+}
+
+message CreateUserRes {
+  int32 id = 1;
+  int32 code = 2;
+  string msg = 3;
+}
+
+// 更新用户信息
+message  UpdateUserReq {
+  int32   id = 1;
+  string  username = 2;
+  string  tel = 3;
+  string  email = 4;
+  int32   age = 5;
+  int32   gender = 6;
+  string  avatar_url = 7;
+}
+
+message UpdateUserRes {
+  int32   code = 1;
+  string  msg = 2;
+}
+
+// 删除用户
+message DelUserReq {
+  int32 id = 1;
+}
+
+message DelUserRes {
+  int32  code = 1;
+  string msg = 2;
+}
+
+// 获取用户信息
+message UserInfoReq {
+  int32  id = 1;
+  string username = 2;
+}
+
+message UserInfoRes {
+  int32   code = 1;
+  string  msg = 2;
+  int32   id = 3;
+  string  username = 4;
+  string  password = 5;
+  string  tel = 6;
+  string  email = 7;
+  int32   age = 8;
+  int32   gender = 9;
+  string  avatar_url = 10;
+}
+
+service User {
+  rpc CreateUser(CreateUserReq) returns(CreateUserRes);
+  rpc UpdateUser(UpdateUserReq) returns(UpdateUserRes);
+  rpc DelUser(DelUserReq) returns(DelUserRes);
+  rpc UserInfo(UserInfoReq) returns(UserInfoRes);
+}
