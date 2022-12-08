@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package upload;
+
+option go_package="./upload";
+
+// 文件上传
+message UploadFileReq {
+  int32  UserId = 1;
+  string FileName = 2;
+  bytes  File = 3;
+}
+
+message UploadFileRes {
+  int32  Code =1;
+  string Msg = 2;
+  string FilePath = 3;
+}
+
+service Upload {
+  rpc UploadFile(UploadFileReq) returns(UploadFileRes);
+}

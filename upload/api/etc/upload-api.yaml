@@ -1,0 +1,21 @@
+Name: upload-api
+Host: 0.0.0.0
+Port: 8882
+MaxBytes: 5048576
+UploadRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: upload.rpc
+Mysql:
+  Host: sh-cynosdbmysql-grp-9c8fn77i.sql.tencentcdb.com
+  Port: 28196
+  Database: boyyangs
+  Username: root
+  Password: zxgf8bTa
+  Charset: utf8
+  Timeout: 10s
+CloudBase:
+  ClientUrl: https://yang-1302829433.cos.ap-chengdu.myqcloud.com
+  ClientSecretId: AKIDjlgTCjEbInS1ObefV9bptlU6VODqETTJ
+  ClientSecretKey: rZ6SgicLq9PZXxOo587A5wfD7ILI5lEU
