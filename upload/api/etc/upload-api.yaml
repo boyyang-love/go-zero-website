@@ -2,11 +2,9 @@ Name: upload-api
 Host: 0.0.0.0
 Port: 8882
 MaxBytes: 5048576
-UploadRpc:
-  Etcd:
-    Hosts:
-      - 127.0.0.1:2379
-    Key: upload.rpc
+Auth:
+  AccessSecret: boyyanglo
+  AccessExpire: 86400000
 Mysql:
   Host: sh-cynosdbmysql-grp-9c8fn77i.sql.tencentcdb.com
   Port: 28196

@@ -13,6 +13,9 @@ type (
 	}
 )
 
+@server(
+	jwt: Auth
+)
 service upload-api {
 	@handler fileUpload
 	post /file/upload (UploadFileReq) returns (UploadFileRes)

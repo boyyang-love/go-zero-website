@@ -4,16 +4,13 @@ import (
 	"blog/helper"
 	"blog/upload/api/internal/config"
 	"blog/upload/models"
-	"blog/upload/rpc/uploadclient"
 	"fmt"
 	"github.com/tencentyun/cos-go-sdk-v5"
-	"github.com/zeromicro/go-zero/zrpc"
 	"gorm.io/gorm"
 )
 
 type ServiceContext struct {
 	Config    config.Config
-	UploadRpc uploadclient.Upload
 	Client    *cos.Client
 	DB        *gorm.DB
 }
@@ -45,7 +42,6 @@ func NewServiceContext(c config.Config) *ServiceContext {
 	}
 	return &ServiceContext{
 		Config:    c,
-		UploadRpc: uploadclient.NewUpload(zrpc.MustNewClient(c.UploadRpc)),
 		Client:    client,
 		DB:        db,
 	}

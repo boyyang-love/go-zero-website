@@ -2,13 +2,11 @@ package logic
 
 import (
 	"blog/errorx"
+	"blog/helper"
 	"blog/user/api/internal/svc"
 	"blog/user/api/internal/types"
-	"blog/user/models"
 	"blog/user/rpc/types/user"
 	"context"
-	"github.com/golang-jwt/jwt/v4"
-
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
@@ -33,7 +31,14 @@ func (l *LoginLogic) Login(req *types.LoginReq) (resp *types.LoginRes, err error
 	})
 
 	if err == nil && userInfo.Code == 1 && req.Password == userInfo.Password {
-		token, err := l.GetJwtToken(auth.AccessSecret, auth.AccessExpire, models.User{Id: uint(userInfo.Id)})
+		token, _ := helper.GenerateJwtToken(
+			&helper.GenerateJwtStruct{
+				Id:       int(userInfo.Id),
+				Username: userInfo.Username,
+				Password: userInfo.Password,
+			},
+			auth.AccessSecret,
+		)
 		if err == nil {
 			return &types.LoginRes{
 				Id:       int64(userInfo.Id),
@@ -48,14 +53,3 @@ func (l *LoginLogic) Login(req *types.LoginReq) (resp *types.LoginRes, err error
 	}
 }
 
-func (l *LoginLogic) GetJwtToken(secretKey string, time int, userInfo models.User) (token string, err error) {
-	claims := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"id":       userInfo.Id,
-		"username": userInfo.Username,
-		"password": userInfo.Password,
-	})
-
-	token, err = claims.SignedString([]byte(secretKey))
-
-	return token, err
-}

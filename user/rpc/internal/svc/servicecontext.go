@@ -1,11 +1,11 @@
 package svc
 
 import (
+	"blog/helper"
 	"blog/user/models"
 	"blog/user/rpc/internal/config"
 	"fmt"
 
-	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
@@ -32,7 +32,7 @@ func NewServiceContext(c config.Config) *ServiceContext {
 		timeout,
 	)
 
-	db, err := gorm.Open(mysql.Open(args), &gorm.Config{})
+	db, err := helper.InitMysql(args)
 
 	if err == nil {
 		fmt.Printf("数据库连接成功！💞💞")
