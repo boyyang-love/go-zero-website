@@ -1,0 +1,23 @@
+// 文件上传
+type (
+	UploadFileReq {
+		Hash     string `json:"hash,optional"`
+		FileName string `json:"file_name,optional"`
+		Ext      string `json:"ext,optional"`
+		Size     int64  `json:"size,optional"`
+		FilePath string `json:"file_path,optional"`
+	}
+
+	UploadFileRes {
+		FileName string `json:"file_name"`
+		FilePath string `json:"file_path"`
+	}
+)
+
+@server(
+	jwt: Auth
+)
+service upload-api {
+	@handler fileUpload
+	post /file/upload (UploadFileReq) returns (UploadFileRes)
+}
