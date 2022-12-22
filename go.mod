@@ -3,6 +3,8 @@ module blog
 go 1.19
 
 require (
+	github.com/golang-jwt/jwt/v4 v4.4.2
+	github.com/tencentyun/cos-go-sdk-v5 v0.7.40
 	github.com/zeromicro/go-zero v1.4.2
 	google.golang.org/grpc v1.51.0
 	google.golang.org/protobuf v1.28.1
@@ -25,7 +27,6 @@ require (
 	github.com/go-redis/redis/v8 v8.11.5 // indirect
 	github.com/go-sql-driver/mysql v1.7.0 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
-	github.com/golang-jwt/jwt/v4 v4.4.2 // indirect
 	github.com/golang/mock v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/go-cmp v0.5.8 // indirect
@@ -51,7 +52,6 @@ require (
 	github.com/prometheus/common v0.37.0 // indirect
 	github.com/prometheus/procfs v0.8.0 // indirect
 	github.com/spaolacci/murmur3 v1.1.0 // indirect
-	github.com/tencentyun/cos-go-sdk-v5 v0.7.40 // indirect
 	go.etcd.io/etcd/api/v3 v3.5.5 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.5.5 // indirect
 	go.etcd.io/etcd/client/v3 v3.5.5 // indirect
